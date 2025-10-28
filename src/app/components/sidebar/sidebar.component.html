@@ -1,0 +1,154 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+  <!-- Logo and brand -->
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <i class="bi bi-key-fill"></i>
+      </div>
+      <div class="logo-text" *ngIf="!isCollapsed">
+        <h5>Dostępnik</h5>
+        <span>Access Management</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation menu -->
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <!-- Dashboard -->
+      <li class="nav-item">
+        <a href="#" class="nav-link active" [class.collapsed]="isCollapsed">
+          <i class="bi bi-speedometer2"></i>
+          <span *ngIf="!isCollapsed">Dashboard</span>
+        </a>
+      </li>
+
+      <!-- Requests section -->
+      <li class="nav-section" *ngIf="!isCollapsed">
+        <span class="section-title">Requests</span>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-inbox"></i>
+          <span *ngIf="!isCollapsed">All Requests</span>
+          <span class="badge bg-primary ms-auto" *ngIf="!isCollapsed">24</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-plus-circle"></i>
+          <span *ngIf="!isCollapsed">New Request</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-hourglass-split"></i>
+          <span *ngIf="!isCollapsed">Pending Approval</span>
+          <span class="badge bg-warning ms-auto" *ngIf="!isCollapsed">7</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-check-circle"></i>
+          <span *ngIf="!isCollapsed">Approved</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-x-circle"></i>
+          <span *ngIf="!isCollapsed">Rejected</span>
+        </a>
+      </li>
+
+      <!-- Processing section -->
+      <li class="nav-section" *ngIf="!isCollapsed">
+        <span class="section-title">Processing</span>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-diagram-3"></i>
+          <span *ngIf="!isCollapsed">Workflows</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-people"></i>
+          <span *ngIf="!isCollapsed">Approvers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-arrow-repeat"></i>
+          <span *ngIf="!isCollapsed">Audit Trail</span>
+        </a>
+      </li>
+
+      <!-- Reports section -->
+      <li class="nav-section" *ngIf="!isCollapsed">
+        <span class="section-title">Reports & Analytics</span>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-bar-chart"></i>
+          <span *ngIf="!isCollapsed">Reports</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-pie-chart"></i>
+          <span *ngIf="!isCollapsed">Analytics</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-download"></i>
+          <span *ngIf="!isCollapsed">Export Data</span>
+        </a>
+      </li>
+
+      <!-- Settings section -->
+      <li class="nav-section" *ngIf="!isCollapsed">
+        <span class="section-title">Administration</span>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-person-badge"></i>
+          <span *ngIf="!isCollapsed">Users & Roles</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-key"></i>
+          <span *ngIf="!isCollapsed">Access Types</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link" [class.collapsed]="isCollapsed">
+          <i class="bi bi-gear"></i>
+          <span *ngIf="!isCollapsed">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Footer with collapse toggle -->
+  <div class="sidebar-footer">
+    <button class="btn-collapse" (click)="toggleCollapse()" [title]="isCollapsed ? 'Expand' : 'Collapse'">
+      <i class="bi" [ngClass]="isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'"></i>
+    </button>
+  </div>
+</aside>

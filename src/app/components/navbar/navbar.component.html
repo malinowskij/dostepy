@@ -1,0 +1,115 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Left side: Menu toggle and breadcrumb -->
+    <div class="navbar-left">
+      <button class="btn-menu-toggle" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+      <div class="navbar-breadcrumb">
+        <i class="bi bi-house-door"></i>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item">{{ currentPage }}</span>
+      </div>
+    </div>
+
+    <!-- Right side: Search, notifications, and user menu -->
+    <div class="navbar-right">
+      <!-- Quick search -->
+      <div class="navbar-search">
+        <i class="bi bi-search"></i>
+        <input
+          type="text"
+          placeholder="Search requests..."
+          class="form-control"
+        />
+      </div>
+
+      <!-- Notifications -->
+      <div class="navbar-item dropdown" #notificationDropdown>
+        <button class="btn-icon" (click)="toggleNotifications()">
+          <i class="bi bi-bell"></i>
+          <span class="badge-notification">3</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="showNotifications">
+          <div class="dropdown-header">
+            <h6>Notifications</h6>
+            <span class="badge bg-primary">3 New</span>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item notification-item" href="#">
+            <div class="notification-icon bg-success">
+              <i class="bi bi-check-circle"></i>
+            </div>
+            <div class="notification-content">
+              <p class="notification-title">Request approved</p>
+              <p class="notification-text">Your access request #1234 has been approved</p>
+              <span class="notification-time">5 min ago</span>
+            </div>
+          </a>
+          <a class="dropdown-item notification-item" href="#">
+            <div class="notification-icon bg-warning">
+              <i class="bi bi-clock"></i>
+            </div>
+            <div class="notification-content">
+              <p class="notification-title">Pending approval</p>
+              <p class="notification-text">Request #1235 requires your approval</p>
+              <span class="notification-time">1 hour ago</span>
+            </div>
+          </a>
+          <a class="dropdown-item notification-item" href="#">
+            <div class="notification-icon bg-info">
+              <i class="bi bi-info-circle"></i>
+            </div>
+            <div class="notification-content">
+              <p class="notification-title">System update</p>
+              <p class="notification-text">New features available in Dostępnik</p>
+              <span class="notification-time">2 hours ago</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-center text-primary" href="#">
+            View all notifications
+          </a>
+        </div>
+      </div>
+
+      <!-- User menu -->
+      <div class="navbar-item dropdown" #userDropdown>
+        <button class="btn-user" (click)="toggleUserMenu()">
+          <div class="user-avatar">
+            <span>JK</span>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Jan Kowalski</span>
+            <span class="user-role">Administrator</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="showUserMenu">
+          <div class="dropdown-header">
+            <strong>Jan Kowalski</strong>
+            <p class="text-muted mb-0">jan.kowalski&#64;firma.pl</p>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-person"></i>
+            My Profile
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-gear"></i>
+            Settings
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="bi bi-question-circle"></i>
+            Help & Support
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-danger" href="#">
+            <i class="bi bi-box-arrow-right"></i>
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

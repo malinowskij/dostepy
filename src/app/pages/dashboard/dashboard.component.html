@@ -1,0 +1,260 @@
+<div class="dashboard">
+  <!-- Page header -->
+  <div class="page-header mb-4">
+    <div>
+      <h2 class="page-title">Dashboard</h2>
+      <p class="page-subtitle">Access Request Management Overview</p>
+    </div>
+    <button class="btn btn-primary">
+      <i class="bi bi-plus-circle me-2"></i>
+      New Request
+    </button>
+  </div>
+
+  <!-- Statistics cards -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card card-stat fade-in">
+        <div class="card-body">
+          <div class="stat-content">
+            <div class="stat-icon bg-primary">
+              <i class="bi bi-inbox"></i>
+            </div>
+            <div class="stat-details">
+              <h3 class="stat-value">{{ stats.total }}</h3>
+              <p class="stat-label">Total Requests</p>
+              <span class="stat-change positive">
+                <i class="bi bi-arrow-up"></i> 12% vs last month
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card card-stat fade-in" style="animation-delay: 0.1s">
+        <div class="card-body">
+          <div class="stat-content">
+            <div class="stat-icon bg-warning">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <div class="stat-details">
+              <h3 class="stat-value">{{ stats.pending }}</h3>
+              <p class="stat-label">Pending Approval</p>
+              <span class="stat-change neutral">
+                <i class="bi bi-dash"></i> No change
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card card-stat fade-in" style="animation-delay: 0.2s">
+        <div class="card-body">
+          <div class="stat-content">
+            <div class="stat-icon bg-success">
+              <i class="bi bi-check-circle"></i>
+            </div>
+            <div class="stat-details">
+              <h3 class="stat-value">{{ stats.approved }}</h3>
+              <p class="stat-label">Approved</p>
+              <span class="stat-change positive">
+                <i class="bi bi-arrow-up"></i> 8% vs last month
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card card-stat fade-in" style="animation-delay: 0.3s">
+        <div class="card-body">
+          <div class="stat-content">
+            <div class="stat-icon bg-danger">
+              <i class="bi bi-x-circle"></i>
+            </div>
+            <div class="stat-details">
+              <h3 class="stat-value">{{ stats.rejected }}</h3>
+              <p class="stat-label">Rejected</p>
+              <span class="stat-change negative">
+                <i class="bi bi-arrow-down"></i> 3% vs last month
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts and recent activity -->
+  <div class="row g-3 mb-4">
+    <!-- Recent requests table -->
+    <div class="col-12 col-lg-8">
+      <div class="card fade-in" style="animation-delay: 0.4s">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-clock-history me-2"></i>
+            Recent Requests
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>User</th>
+                  <th>Access Type</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let request of recentRequests">
+                  <td>
+                    <span class="request-id">#{{ request.id }}</span>
+                  </td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar-sm">{{ request.userInitials }}</div>
+                      <div>
+                        <div class="user-name">{{ request.userName }}</div>
+                        <div class="user-email">{{ request.userEmail }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="access-type">
+                      <i class="bi bi-key me-1"></i>
+                      {{ request.accessType }}
+                    </span>
+                  </td>
+                  <td>
+                    <span [class]="'badge status-' + request.status.toLowerCase()">
+                      {{ request.status }}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="date-text">{{ request.date }}</span>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-sm btn-outline-primary" title="View details">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-secondary" title="More actions">
+                        <i class="bi bi-three-dots"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="text-primary text-decoration-none">
+            View all requests
+            <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick actions and stats -->
+    <div class="col-12 col-lg-4">
+      <!-- Quick actions -->
+      <div class="card mb-3 fade-in" style="animation-delay: 0.5s">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-lightning me-2"></i>
+            Quick Actions
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary">
+              <i class="bi bi-plus-circle me-2"></i>
+              Create New Request
+            </button>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-hourglass-split me-2"></i>
+              Review Pending ({{ stats.pending }})
+            </button>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-bar-chart me-2"></i>
+              View Reports
+            </button>
+            <button class="btn btn-outline-primary">
+              <i class="bi bi-download me-2"></i>
+              Export Data
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Processing time chart -->
+      <div class="card fade-in" style="animation-delay: 0.6s">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-speedometer2 me-2"></i>
+            Avg. Processing Time
+          </h5>
+        </div>
+        <div class="card-body text-center">
+          <div class="processing-time">
+            <h2 class="display-4 text-primary mb-0">2.4</h2>
+            <p class="text-muted">days</p>
+          </div>
+          <div class="progress mb-3" style="height: 8px">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              style="width: 70%"
+              aria-valuenow="70"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <p class="small text-success mb-0">
+            <i class="bi bi-arrow-down"></i>
+            15% faster than last month
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity timeline -->
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card fade-in" style="animation-delay: 0.7s">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-activity me-2"></i>
+            Recent Activity
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let activity of activities">
+              <div class="timeline-marker" [class]="'bg-' + activity.type"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <strong>{{ activity.title }}</strong>
+                  <span class="timeline-time">{{ activity.time }}</span>
+                </div>
+                <p class="timeline-description">{{ activity.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
